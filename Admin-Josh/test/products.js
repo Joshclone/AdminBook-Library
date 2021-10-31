@@ -18,7 +18,7 @@ describe('Products', () => {
       description: 'hello',
       price: '1170',
     },
-    testName = 'Cannon EOS 80D DSLR Camera',
+    testName = 'Pro Javascript',
     testPrice = { title: 'hello', price: '778' };
 
   /*
