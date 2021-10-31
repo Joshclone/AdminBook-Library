@@ -3,7 +3,7 @@ const Product = require("../models/productModel");
 const { getPostData } = require("../utils");
 
 ///    Gets All book in the library database
-// via  GET /api/library
+// via  GET /api/products
 async function getProducts(req, res) {
   try {
     const products = await Product.findAll();
@@ -16,14 +16,14 @@ async function getProducts(req, res) {
 }
 
 //These function    Gets Single book from the library database
-//    GET /api/library/:id
+//    GET /api/products/:id
 async function getProduct(req, res, id) {
   try {
     const product = await Product.findById(id);
 
     if (!product) {
       res.writeHead(404, { "Content-Type": "application/json" });
-      res.end(JSON.stringify({ message: "Product Not Found" }));
+      res.end(JSON.stringify({ message: "Book Not Found" }));
     } else {
       res.writeHead(200, { "Content-Type": "application/json" });
       res.end(JSON.stringify(product));
@@ -33,8 +33,8 @@ async function getProduct(req, res, id) {
   }
 }
 
-// @desc    Create a Product
-// @route   POST /api/products
+//    Create a Book
+//   POST /api/products
 async function createProduct(req, res) {
   try {
     const body = await getPostData(req);
@@ -56,7 +56,7 @@ async function createProduct(req, res) {
   }
 }
 
-//     Update a Product
+//     Update a Book
 //    PUT /api/products/:id
 //Here we  Update a Book
 //    PUT /api/library/:id
